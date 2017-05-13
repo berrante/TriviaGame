@@ -65,7 +65,7 @@ function newGame (){
 		//start timer
 		countdown();
 		//display timer
-		$('.display').append("timer goes here");
+		$('.display').append("00 : " + time);
 		//hide start button
 		$('.startButton').hide();
 		//display quiz
@@ -101,7 +101,7 @@ function countdown (){
 		}
 		else {
 			// decrease seconds by 1
-			$('.display').html("00:" + time);
+			$('.display').html("00 : " + time);
 			time--;
 			countdown();
 		}

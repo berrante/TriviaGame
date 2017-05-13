@@ -49,7 +49,7 @@ var correctAnswers = 0;
 var incorrectAnswers = 0;
 var noAnswers = 0;
 
-var time = 2;
+var time = 60;
 
 //game starts with a screen displayig a start button
 window.onload = function (){

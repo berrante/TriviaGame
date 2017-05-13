@@ -41,48 +41,110 @@ var triviaQuestions = [{
 },
 ];
 
-//vars that stores user guesses
+//var that stores user guesses
 var userGuess = [];
+
+//var that stores answers
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var noAnswers = 0;
 
-//make countdown timer
-
+var time = 2;
 
 //game starts with a screen displayig a start button
-window.onload = function() {
+window.onload = function (){
 	$('.quiz-container').hide();
+	$('.results').hide();
 	newGame();
 }
 
+// game
 function newGame (){
 	//user presses start
-	$('button').on('click', function (){
+	$('.startButton').on('click', function (){
+		//start timer
+		countdown();
+		//display timer
+		$('.display').append("timer goes here");
 		//hide start button
 		$('.startButton').hide();
 		//display quiz
 		$('.quiz-container').show();
-		//display countdown
-		$('.display').append("timer goes here");
 			//populate the prompt div with questions
-			for (i=0;i < triviaQuestions.length; i++){
-				$('.prompt').append(triviaQuestions[i].question + "<br>");
-					console.log(triviaQuestions[i].question);
+			for (var i=0;i < triviaQuestions.length; i++){
+				
+				$("#quiz").append("<div>" + triviaQuestions[i].question +  "</div>");
+				
+				//populate choices div with possible answers
+				for (var j = 0; j < triviaQuestions[i].answerList.length; j++) {
+					
+				$('#quiz').append(triviaQuestions[i].answerList[j] + ' <input type="radio" name="answer' + i + '" value="' + j + '">');
+				
+				}
+				
+				$('#quiz').append("<br><br>");
 			}
-			//populate the choices div with answerList
-			for (i = 0; i < triviaQuestions.length; i++) {
-				$('.choices').append(triviaQuestions[i].answerList + '<input type="radio" name="radio_group">');
-			}	
-		})
+	})
+}
+//timer
+function countdown (){
+	
+	setTimeout(function (){
+		
+		//when time runs out
+		if (time === 0){
+		//show results
+		$('.results').show();
+		//hide quiz
+		$('.quiz-container').hide();
+		checkAnswers();
+		}
+		else {
+			// decrease seconds by 1
+			$('.display').html("00:" + time);
+			time--;
+			countdown();
+		}
+	}, 1000);
 }
 
-/* GAME LOGIC */
+// check answers
+function checkAnswers (){
 
-//when time runs out, display a results page
+	for (var i=0; i < triviaQuestions.length; i++){
+		
+		var a = $('input[name=answer' + i + ']:checked').val();
+		
+		if (a === undefined){
+			noAnswers++;
 
-	//if the userGuess matches the correctAnswer, increase correctAnswers by 1
-		// if it doesnt match the correctAnswer, increase incorrectAnswers by 1
-			// if there was no answer, increase noAnswers by 1
+		} else if (a == triviaQuestions[i].correctAnswer){
+			correctAnswers++;
+			
+		}
+		else {
+			incorrectAnswers++;
+			
+		}
+	}
+	$('.answeredCorrect').html("Correct Answers: " + correctAnswers);
+	$('.answeredIncorrect').html("Incorrect Answers: " + incorrectAnswers);
+	$('.noAnswer').html("Not Answered: " + noAnswers);
+}
+
+
+$('.again').on('click', resetGame);
+
+	function resetGame(){
+		$('.startButton').show();
+		$('.quiz-container').hide();
+		$('.results').hide();
+		newGame();
+		correctAnswers = 0;
+		incorrectAnswers = 0;
+		noAnswers = 0;
+		time = 60;
+	}
+
+
 	
-	//display play again? button

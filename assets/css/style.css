@@ -1,3 +1,4 @@
+/* page */
 body { 
     height: 100%;
     margin:0px;
@@ -45,6 +46,38 @@ footer {
 	margin-bottom: 4em;
 }
 
+.quiz-container {
+	width: 60%;
+	margin: 0 auto;
+	font-family: 'Oswald', sans-serif;
+	font size: 2em;
+	text-align: center;
+	color: #333;
+}
+
+#quiz {
+	font-size: 1.2em;
+}
+
+form {
+	color: #333;
+}
+
+.display {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.5em;
+	color: #86816d;
+}
+
+#resultBox {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.5em;
+	color: #86816d;
+    margin: 20 33% 0 33%;
+    text-align: center;
+}
+
+/* headings */
 h1 {
 	font-family: 'Diplomata', cursive;
 	text-transform: uppercase;
@@ -74,43 +107,46 @@ h3 {
 	margin: 0 33% 1em 0;
 }
 
-button {
-	width: 20%;
+h4 {
+	font-family: 'Share Tech', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 2em;
+	letter-spacing: 2px;
+	color: #267d93;
+	margin: 0 33% 0 33%;
+}
+
+/* buttons */
+.startButton {
 	font-family: 'Share Tech', sans-serif;
 	font-size: 2em;
 	background-color: #faf3e6;
 	color: #333;
 	border: 5px double #888;
 	border-radius: 5px;
-	margin-left: 39%;
-}
-
-.startButton {
-	width: 100%;
+	width: 15%;
 	height: 50px;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 }
 
-.quiz-container {
-	width: 5=60%;
-	margin: 0 auto;
-	font-family: 'Oswald', sans-serif;
-	font size: 2em;
-	text-align: center;
-	color: #777;
-}
-
-form {
+.again {
+	font-family: 'Share Tech', sans-serif;
+	font-size: 2em;
+	background-color: #faf3e6;
 	color: #333;
+	border: 5px double #888;
+	border-radius: 5px;
+	width: 15%;
+	height: 50px;
+	margin: auto;
+	position: absolute;
+	top: 50%; left: 0; bottom: 0; right: 0;
 }
 
-.display {
-	font-family: 'Oswald', sans-serif;
-	font-size: 1.5em;
-	color: #86816d;
-}
+/* grid */
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
